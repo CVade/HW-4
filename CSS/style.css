@@ -1,0 +1,30 @@
+.hide {
+    display: none;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 120%;
+    text-align: center;
+}
+
+.wrapper {
+    margin: 100px auto 0 auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.timer {
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 10px;
+    font-size: 125%;
+}
+
+#homeBtn {
+    font-size: large;
+}
