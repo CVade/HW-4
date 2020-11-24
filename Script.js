@@ -1,5 +1,5 @@
 var currentQuestionIndex = 0;
-var time = questions.length * 15;
+var time = 0;
 var timerId;
 
 var questionsEl = document.getElementById("questions");
@@ -10,6 +10,11 @@ var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 
+ document.getElementById("scoreBtn").onclick = function(event){
+    event.preventDefault();
+    window.location.href = "highscores.html";
+}
+
 function startQuiz() {
     var startScreenEl = document.getElementById("start-screen");
     startScreenEl.setAttribute("class", "hide");
@@ -17,16 +22,23 @@ function startQuiz() {
     questionsEl.removeAttribute("class");
 
     timerId = setInterval(clockTick, 1000);
-
+    time = questions.length * 15;
+    console.log(time)
     timerEl.textContent = time;
 
     getQuestion();
 }
 
 function getQuestion() {
+    console.log(questions);
+    
     var currentQuestion = questions[currentQuestionIndex];
 
-    var titleEl = document.getElementById("question-title");
+    console.log(currentQuestion);
+
+    var titleEl = document.getElementById("questions-title");
+
+    console.log(titleEl)
     titleEl.textContent = currentQuestion.title;
 
     choicesEl.innerHTML = "";
@@ -49,7 +61,7 @@ function questionClick() {
         time -= 15;
 
         if (time < 0) {
-            time = 0:
+            time = 0;
         }
 
         timerEl.textContent = time;
@@ -88,6 +100,8 @@ function quizEnd() {
 function clockTick() {
     time--;
     timerEl.textContent = time;
+
+    console.log(time);
 
     if (time <= 0) {
         quizEnd();
